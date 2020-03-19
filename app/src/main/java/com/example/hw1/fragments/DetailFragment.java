@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.hw1.R;
+import com.example.hw1.dummy.DummyContent;
 
 public class DetailFragment extends Fragment {
     public static String ARG_POSITION = "POSITION";
@@ -36,8 +37,8 @@ public class DetailFragment extends Fragment {
         }
 
         TextView textDetail = view.findViewById(R.id.textDetail);
-        textDetail.setText(String.valueOf(position + 1));
-        textDetail.setTextColor(position % 2 == 0 ? Color.RED : Color.BLUE);
+        textDetail.setText(DummyContent.ITEMS.get(position).getText());
+        textDetail.setTextColor(DummyContent.ITEMS.get(position).getTextColor());
 
         return view;
     }

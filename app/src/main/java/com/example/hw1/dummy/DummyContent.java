@@ -1,5 +1,6 @@
 package com.example.hw1.dummy;
 
+import android.graphics.Color;
 import android.os.Parcelable;
 
 import com.example.hw1.dummy.DummyContent.DummyItem;
@@ -12,37 +13,31 @@ public class DummyContent {
     private static int COUNT = 0;
 
     public static int createDummyItem() {
-        addItem(new DummyItem(String.valueOf(COUNT), "Item " + COUNT, makeDetails(COUNT)));
+        int textColor = COUNT % 2 == 0 ? Color.RED : Color.BLUE;
+        ITEMS.add(new DummyItem(String.valueOf(COUNT)+1, textColor));
         return COUNT++;
     }
 
-    private static void addItem(DummyItem item) {
-        ITEMS.add(item);
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
-    }
-
     public static class DummyItem {
-        public final String id;
-        public final String content;
-        public final String details;
+        final String text;
+        final int textColor;
 
-        public DummyItem(String id, String content, String details) {
-            this.id = id;
-            this.content = content;
-            this.details = details;
+        DummyItem(String text, int textColor) {
+            this.text = text;
+            this.textColor = textColor;
+        }
+
+        public int getTextColor() {
+            return textColor;
+        }
+
+        public String getText() {
+            return text;
         }
 
         @Override
         public String toString() {
-            return content;
+            return text;
         }
     }
 }

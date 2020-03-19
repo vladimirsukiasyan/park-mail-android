@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hw1.R;
+import com.example.hw1.dummy.DummyContent;
 import com.example.hw1.dummy.DummyContent.DummyItem;
 import com.example.hw1.fragments.ItemFragment.OnListFragmentInteractionListener;
 
@@ -34,8 +35,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mContent.setText(String.valueOf(position + 1));
-        holder.mContent.setTextColor(position % 2 == 0 ? Color.RED : Color.BLUE);
+        holder.mContent.setText(DummyContent.ITEMS.get(position).getText());
+        holder.mContent.setTextColor(DummyContent.ITEMS.get(position).getTextColor());
 
         holder.mView.setOnClickListener(v -> {
             if (null != mListener) {
