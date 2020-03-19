@@ -1,12 +1,11 @@
 package com.example.hw1;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.hw1.dummy.DummyContent;
 import com.example.hw1.fragments.DetailFragment;
 import com.example.hw1.fragments.ItemFragment;
 
@@ -23,16 +22,13 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fragment, ItemFragment.newInstance(3))
+                    .add(R.id.fragment, new ItemFragment())
                     .commit();
         }
-
     }
 
     @Override
     public void onListFragmentInteraction(int position) {
-        Log.d("DEBUG", "[MainActivity] Item" + position + "was clicked");
-
         Bundle args = new Bundle();
         args.putInt(DetailFragment.ARG_POSITION, position);
         DetailFragment fragment = new DetailFragment();
@@ -40,7 +36,7 @@ public class MainActivity extends AppCompatActivity
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment, fragment )
+                .replace(R.id.fragment, fragment)
                 .addToBackStack(null)
                 .commit();
     }
