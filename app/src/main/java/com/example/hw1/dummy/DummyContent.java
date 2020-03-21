@@ -14,7 +14,7 @@ public class DummyContent {
 
     public static int createDummyItem() {
         int textColor = COUNT % 2 == 0 ? Color.RED : Color.BLUE;
-        ITEMS.add(new DummyItem(String.valueOf(COUNT)+1, textColor));
+        ITEMS.add(new DummyItem(String.valueOf(COUNT+1), textColor));
         return COUNT++;
     }
 
